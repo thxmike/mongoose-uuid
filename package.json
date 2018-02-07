@@ -31,5 +31,8 @@
     "coveralls": "^2.11.4",
     "istanbul": "^0.3.20",
     "mocha": "^2.3.2"
+  },
+  "engines": {
+    "node": ">=6.4.0"
   }
 }
