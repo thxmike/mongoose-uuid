@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var bson = require('bson');
 var util = require('util');
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 
 var Document = mongoose.Document;
 
