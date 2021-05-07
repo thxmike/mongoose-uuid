@@ -1,9 +1,8 @@
 'use strict';
-
-var mongoose = require('mongoose');
-var bson = require('bson');
-var util = require('util');
-var uuid = require('uuid');
+import bson from 'bson';
+import mongoose from 'mongoose';
+import util from 'util';
+import uuid from 'uuid';
 
 var Document = mongoose.Document;
 
