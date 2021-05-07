@@ -3,6 +3,7 @@
   "version": "1.0.9",
   "description": "UUID schema type for mongoose. This is an updated version of https://github.com/niahmiah/mongoose-uuid",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "mocha",
     "coverage": "istanbul cover _mocha"
