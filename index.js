@@ -1,5 +1,5 @@
 'use strict';
-import { BSON } from 'bson';
+import { Binary } from 'bson';
 import mongoose from 'mongoose';
 import util from 'util';
 import { parse } from 'uuid';
@@ -67,7 +67,7 @@ SchemaUUID.prototype.cast = function (value, doc, init) {
       return value;
     } else if (typeof value === 'string') {
       var uuidBuffer = new mongoose.Types.Buffer(parse(value));
-      uuidBuffer.subtype(BSON.Binary.SUBTYPE_UUID);
+      uuidBuffer.subtype(Binary.SUBTYPE_UUID);
       return uuidBuffer.toObject();
     } else if (Buffer.isBuffer(value) || !util.isObject(value)) {
       throw new CastError('UUID', value, this.path);
@@ -103,7 +103,7 @@ SchemaUUID.prototype.cast = function (value, doc, init) {
 
   if (typeof value === 'string') {
     uuidBuffer = new mongoose.Types.Buffer(parse(value));
-    uuidBuffer.subtype(BSON.Binary.SUBTYPE_UUID);
+    uuidBuffer.subtype(Binary.SUBTYPE_UUID);
     return uuidBuffer.toObject();
   }
 
