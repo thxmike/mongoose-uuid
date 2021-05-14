@@ -2,7 +2,6 @@
 import { Binary } from 'bson';
 import mongoose from 'mongoose';
 import util from 'util';
-import { parse } from 'uuid';
 
 var Document = mongoose.Document;
 
@@ -92,12 +91,24 @@ SchemaUUID.prototype.cast = function (value, doc, init) {
     return ret;
   }
 
+  if (init && doc instanceof mongoose.Types.Embedded) {
+    return getter(value);
+  }
+  
   if (value === null || value === undefined) {
     return value;
   }
 
   if (value instanceof mongoose.Types.Buffer.Binary)
     return value;
+
+  //Custom: Handle Native Mongo Binary Type
+  if (value.constructor.name = 'Binary') {
+    if (init && doc instanceof mongoose.Types.Embedded) {
+      return getter(value);
+    }
+    return value;
+  }
 
   var uuidBuffer;
 
