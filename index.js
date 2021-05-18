@@ -103,7 +103,7 @@ SchemaUUID.prototype.cast = function (value, doc, init) {
     return value;
 
   //Custom: Handle Native Mongo Binary Type
-  if (value.constructor.name = 'Binary') {
+  if (value.constructor.name === 'Binary') {
     if (init && doc instanceof mongoose.Types.Embedded) {
       return getter(value);
     }
