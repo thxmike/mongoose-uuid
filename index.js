@@ -2,6 +2,7 @@
 import { Binary } from 'bson';
 import mongoose from 'mongoose';
 import util from 'util';
+import uuid from 'uuid-mongodb';
 
 var Document = mongoose.Document;
 
@@ -65,7 +66,7 @@ SchemaUUID.prototype.cast = function (value, doc, init) {
     if (value instanceof mongoose.Types.Buffer.Binary) {
       return value;
     } else if (typeof value === 'string') {
-      var uuidBuffer = new mongoose.Types.Buffer(parse(value));
+      var uuidBuffer = new mongoose.Types.Buffer(uuid.from(value));
       uuidBuffer.subtype(Binary.SUBTYPE_UUID);
       return uuidBuffer.toObject();
     } else if (Buffer.isBuffer(value) || !util.isObject(value)) {
@@ -113,7 +114,7 @@ SchemaUUID.prototype.cast = function (value, doc, init) {
   var uuidBuffer;
 
   if (typeof value === 'string') {
-    uuidBuffer = new mongoose.Types.Buffer(parse(value));
+    uuidBuffer = new mongoose.Types.Buffer(uuid.from(value));
     uuidBuffer.subtype(Binary.SUBTYPE_UUID);
     return uuidBuffer.toObject();
   }
